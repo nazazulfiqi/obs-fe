@@ -31,6 +31,7 @@ import axios from "axios";
 import { editUser } from "@/redux/userSlice";
 import { useDispatch } from "react-redux";
 import { useToast } from "@/components/ui/use-toast";
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 // import { RootState } from "@/redux/store";
 
 const EditUserModule = () => {
@@ -72,7 +73,7 @@ const EditUserModule = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:3000/users/${id}`)
+        .get(`${BASE_API_URL}/users/${id}`)
         .then((response) => {
           setUserData(response.data);
           form.reset(response.data);
@@ -87,10 +88,7 @@ const EditUserModule = () => {
     setLoading(true);
 
     try {
-      const response = await axios.put(
-        `http://localhost:3000/users/${id}`,
-        data
-      );
+      const response = await axios.put(`${BASE_API_URL}/users/${id}`, data);
 
       dispatch(editUser(response.data));
 

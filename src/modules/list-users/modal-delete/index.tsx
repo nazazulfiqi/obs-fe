@@ -14,6 +14,7 @@ import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { deleteUser, setUsers } from "@/redux/userSlice";
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 interface ModalDeleteUserProps {
   modalTrigger: React.ReactNode;
@@ -29,7 +30,7 @@ export const ModalDeleteUser = ({
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/users");
+      const response = await axios.get(`${BASE_API_URL}/users`);
       dispatch(setUsers(response.data));
     } catch (error) {
       console.error("Failed to fetch users:", error);
@@ -38,7 +39,7 @@ export const ModalDeleteUser = ({
 
   const handleSubmitDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/users/${userId}`);
+      await axios.delete(`${BASE_API_URL}/users/${userId}`);
       dispatch(deleteUser(parseInt(userId)));
       fetchUsers();
 

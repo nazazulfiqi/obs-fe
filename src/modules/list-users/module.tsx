@@ -11,6 +11,7 @@ import { RootState } from "@/redux/store";
 import { User } from "@/types/user";
 import { setUsers } from "@/redux/userSlice";
 import axios from "axios";
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 const ListUsersModule: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -19,7 +20,9 @@ const ListUsersModule: React.FC = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await axios.get<User[]>("http://localhost:3000/users");
+      const response = await axios.get<User[]>(
+        `https://api-obs.vercel.app/users`
+      );
       dispatch(setUsers(response.data));
     };
 

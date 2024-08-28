@@ -31,6 +31,7 @@ import axios from "axios";
 import { addUser } from "@/redux/userSlice";
 import { useDispatch } from "react-redux";
 import { useToast } from "@/components/ui/use-toast";
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 const AddUserModule = () => {
   const [loading, setLoading] = useState(false);
@@ -68,7 +69,7 @@ const AddUserModule = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/users", data);
+      const response = await axios.post(`${BASE_API_URL}/users`, data);
 
       dispatch(addUser(response.data));
       form.reset();
