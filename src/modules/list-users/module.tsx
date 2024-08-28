@@ -20,9 +20,7 @@ const ListUsersModule: React.FC = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await axios.get<User[]>(
-        `https://api-obs.vercel.app/users`
-      );
+      const response = await axios.get<User[]>(`${BASE_API_URL}/users`);
       dispatch(setUsers(response.data));
     };
 
