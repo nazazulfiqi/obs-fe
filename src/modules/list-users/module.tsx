@@ -17,13 +17,13 @@ const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 const ListUsersModule: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true); // Add loading state
+  const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.users.users);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      setLoading(true); // Start loading
+      setLoading(true);
 
       try {
         const response = await axios.get<User[]>(`${BASE_API_URL}/users`);
@@ -31,7 +31,7 @@ const ListUsersModule: React.FC = () => {
       } catch (error) {
         console.error('Failed to fetch users:', error);
       } finally {
-        setLoading(false); // Stop loading once data is fetched or error occurs
+        setLoading(false);
       }
     };
 
@@ -72,7 +72,7 @@ const ListUsersModule: React.FC = () => {
 
       {/* Show skeleton loading cards if loading */}
       {loading ? (
-        <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3">
+        <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3 ">
           {Array.from({ length: 8 }).map((_, index) => (
             <SkeletonCard key={index} />
           ))}
