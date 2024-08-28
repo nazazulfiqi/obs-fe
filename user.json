@@ -47,10 +47,11 @@
       }
     },
     {
-      "id": "3",
-      "name": "Clementine Bauch",
+      "name": "TEST",
       "username": "Samantha",
+      "phone": "1-463-123-4447",
       "email": "Nathan@yesenia.net",
+      "website": "ramiro.info",
       "address": {
         "street": "Douglas Extension",
         "suite": "Suite 847",
@@ -61,13 +62,12 @@
           "lng": "-47.0653"
         }
       },
-      "phone": "1-463-123-4447",
-      "website": "ramiro.info",
       "company": {
         "name": "Romaguera-Jacobson",
         "catchPhrase": "Face to face bifurcated interface",
         "bs": "e-enable strategic applications"
-      }
+      },
+      "id": "3"
     },
     {
       "id": "4",
@@ -116,10 +116,11 @@
       }
     },
     {
-      "id": "6",
-      "name": "Mrs. Dennis Schulist",
+      "name": "Zul",
       "username": "Leopoldo_Corkery",
+      "phone": "1-477-935-8478 x6430",
       "email": "Karley_Dach@jasper.info",
+      "website": "ola.org",
       "address": {
         "street": "Norberto Crossing",
         "suite": "Apt. 950",
@@ -130,13 +131,12 @@
           "lng": "71.7478"
         }
       },
-      "phone": "1-477-935-8478 x6430",
-      "website": "ola.org",
       "company": {
         "name": "Considine-Lockman",
         "catchPhrase": "Synchronised bottom-line interface",
         "bs": "e-enable innovative applications"
-      }
+      },
+      "id": "6"
     },
     {
       "id": "7",

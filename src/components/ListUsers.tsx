@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+// import React, { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import axios from "axios";
 // import { Link } from "react-router-dom";
-import { setUsers } from "../redux/userSlice";
-import { RootState } from "../redux/store";
-import { User } from "../types/user";
+// import { setUsers } from "../redux/userSlice";
+// import { RootState } from "../redux/store";
+// import { User } from "../types/user";
 import {
   Card,
   CardContent,
@@ -19,23 +19,14 @@ import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
+import { User } from "@/types/user";
 
-const ListUsers: React.FC = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((state: RootState) => state.users.users);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await axios.get<User[]>("http://localhost:4000/users");
-      dispatch(setUsers(response.data));
-    };
-
-    fetchUsers();
-  }, [dispatch]);
+const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
+  console.log(users);
 
   return (
     <>
-      {users.map((user) => (
+      {users.map((user: User) => (
         <Card
           key={user.id}
           className="shadow-md hover:shadow-lg transition-shadow duration-300"
@@ -70,7 +61,7 @@ const ListUsers: React.FC = () => {
           <CardFooter className="flex justify-between">
             <div className="flex items-center gap-2">
               <Button className="bg-blue-500 hover:bg-blue-600" asChild>
-                <Link to={`/pekerjaan/edit-kategori/${user.id}`}>
+                <Link to={`/edit-user/${user.id}`}>
                   <FaRegEdit size={16} />
                 </Link>
               </Button>
