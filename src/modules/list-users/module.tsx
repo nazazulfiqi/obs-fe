@@ -19,7 +19,7 @@ const ListUsersModule: React.FC = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await axios.get<User[]>("http://localhost:4000/users");
+      const response = await axios.get<User[]>("http://localhost:3000/users");
       dispatch(setUsers(response.data));
     };
 

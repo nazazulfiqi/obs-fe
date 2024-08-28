@@ -72,7 +72,7 @@ const EditUserModule = () => {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:4000/users/${id}`)
+        .get(`http://localhost:3000/users/${id}`)
         .then((response) => {
           setUserData(response.data);
           form.reset(response.data);
@@ -88,7 +88,7 @@ const EditUserModule = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:4000/users/${id}`,
+        `http://localhost:3000/users/${id}`,
         data
       );
 

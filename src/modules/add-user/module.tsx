@@ -68,7 +68,7 @@ const AddUserModule = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:4000/users", data);
+      const response = await axios.post("http://localhost:3000/users", data);
 
       dispatch(addUser(response.data));
       form.reset();

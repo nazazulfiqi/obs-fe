@@ -29,7 +29,7 @@ export const ModalDeleteUser = ({
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/users");
+      const response = await axios.get("http://localhost:3000/users");
       dispatch(setUsers(response.data));
     } catch (error) {
       console.error("Failed to fetch users:", error);
@@ -38,7 +38,7 @@ export const ModalDeleteUser = ({
 
   const handleSubmitDelete = async () => {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`http://localhost:3000/users/${userId}`);
       dispatch(deleteUser(parseInt(userId)));
       fetchUsers();
 
