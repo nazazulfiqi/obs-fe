@@ -2,11 +2,14 @@
 
 ## Project Setup
 
-1. Clone the repository.
+1. Clone the repository (Front End).
 2. Run `npm install` to install dependencies.
-3. Start the JSON server: `npm run json-server`.
-4. Start the Vite development server: `npm run dev`.
-5. Open the application in your browser at `http://localhost:5173`.
+3. Create a .env file and copy the contents from .env.example.
+4. Set the VITE_BASE_API_URL to http://localhost:3000 if you want to run it through a local backend.
+5. Clone the repository json server (Back End) at https://github.com/nazazulfiqi/api-obs
+6. Start the Back End (JSON server): `npm start`.
+7. Start the Front End Vite development server: `npm run dev`.
+8. Open the application in your browser at `http://localhost:5173`.
 
 ## Features
 
@@ -19,4 +22,4 @@
 
 ## Deployment
 
-The application is deployed on [Vercel/Netlify] (add link here).
+The application is deployed on [Vercel] https://obs-fe-assignment-six.vercel.app/
