@@ -13,7 +13,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { deleteUser, setUsers } from "@/redux/userSlice"; // Import the Redux actions
+import { deleteUser, setUsers } from "@/redux/userSlice";
 
 interface ModalDeleteUserProps {
   modalTrigger: React.ReactNode;
@@ -38,16 +38,10 @@ export const ModalDeleteUser = ({
 
   const handleSubmitDelete = async () => {
     try {
-      // Make DELETE request to remove user from JSON server
       await axios.delete(`http://localhost:4000/users/${userId}`);
-
-      // Dispatch the deleteUser action to update Redux store
       dispatch(deleteUser(parseInt(userId)));
-
-      // Refetch users to update the list
       fetchUsers();
 
-      // Show success toast notification
       toast({
         title: "User Deleted Successfully",
         description: "The user has been successfully deleted.",
@@ -55,7 +49,6 @@ export const ModalDeleteUser = ({
     } catch (error) {
       console.error("Failed to delete user:", error);
 
-      // Show error toast notification
       toast({
         title: "Error",
         description: "Failed to delete the user. Please try again.",
@@ -75,18 +68,18 @@ export const ModalDeleteUser = ({
           </div>
           <DialogTitle>
             <h6 className="text-center">
-              Apakah Anda yakin akan menghapus User?
+              Are you sure you want to delete this user?
             </h6>
           </DialogTitle>
 
           <DialogDescription className="text-center">
-            Cek kembali informasi User dengan benar.
+            Please review the user information carefully.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex w-full justify-between">
           <DialogClose asChild>
             <Button variant="outline" className="w-full">
-              Tinjau Ulang
+              Review Again
             </Button>
           </DialogClose>
           <DialogClose className="w-full">
@@ -95,7 +88,7 @@ export const ModalDeleteUser = ({
               className="w-full bg-red-800 hover:bg-red-900"
               onClick={handleSubmitDelete}
             >
-              Hapus
+              Delete
             </Button>
           </DialogClose>
         </DialogFooter>

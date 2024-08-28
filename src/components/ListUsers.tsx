@@ -1,10 +1,4 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import { setUsers } from "../redux/userSlice";
-// import { RootState } from "../redux/store";
-// import { User } from "../types/user";
+import React from "react";
 import {
   Card,
   CardContent,
@@ -20,10 +14,9 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { User } from "@/types/user";
+import { ModalDetailUser } from "@/modules/detail-user/module";
 
 const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
-  console.log(users);
-
   return (
     <>
       {users.map((user: User) => (
@@ -74,11 +67,14 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
                 }
               />
             </div>
-            <Button className="" asChild>
-              <Link to="/manajemen-pengguna/1">
-                <IoEyeOutline size={18} />
-              </Link>
-            </Button>
+            <ModalDetailUser
+              user={user}
+              modalTrigger={
+                <Button className="bg-slate-900 hover:bg-slate-950">
+                  <IoEyeOutline size={18} />
+                </Button>
+              }
+            />
           </CardFooter>
         </Card>
       ))}

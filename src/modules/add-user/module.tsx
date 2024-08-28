@@ -68,22 +68,15 @@ const AddUserModule = () => {
     setLoading(true);
 
     try {
-      // Make POST request to add a new user to the JSON server
       const response = await axios.post("http://localhost:4000/users", data);
 
-      // Dispatch the addUser action to update Redux store
       dispatch(addUser(response.data));
-
-      // Reset the form
       form.reset();
       navigate("/");
       toast({
         title: "User added successfully",
         description: "User added successfully",
       });
-
-      // Success message (Optional)
-      console.log("User added successfully:", response.data);
     } catch (error) {
       console.error("Failed to add user:", error);
     } finally {
@@ -327,7 +320,6 @@ const AddUserModule = () => {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className="my-3 flex justify-end gap-3">
                 <Link to="/">
                   <Button className="hover:bg-slate-950 border-white text-white border-2 bg-slate-900 shadow-md">
@@ -347,19 +339,19 @@ const AddUserModule = () => {
                   <DialogContent className="z-[9999] p-12 text-center sm:max-w-[425px]">
                     <DialogHeader>
                       <DialogTitle className="text-center">
-                        Apakah Anda yakin informasi sudah sesuai?
+                        Are you sure the information is correct?
                       </DialogTitle>
                       <div className="py-3">
                         <Separator className="bg-green-500 mx-auto h-1 w-1/3 rounded-full" />
                       </div>
                       <DialogDescription className="text-center">
-                        Cek kembali informasi User dengan benar.
+                        Please review the user information carefully.
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter className="flex w-full justify-between">
                       <DialogClose className="w-full">
                         <Button variant="outline" className="w-full">
-                          Tinjau Ulang
+                          Review Again
                         </Button>
                       </DialogClose>
                       <DialogClose className="w-full">

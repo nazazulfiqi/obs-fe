@@ -38,14 +38,10 @@ const EditUserModule = () => {
   const [userData, setUserData] = useState<z.infer<
     typeof addUserSchema
   > | null>(null);
-  const { id } = useParams<{ id: string }>(); // Get id from URL params
+  const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { toast } = useToast();
-
-  console.log("id", id);
-
-  console.log("data", userData);
 
   const form = useForm<z.infer<typeof addUserSchema>>({
     resolver: zodResolver(addUserSchema),
@@ -75,12 +71,11 @@ const EditUserModule = () => {
 
   useEffect(() => {
     if (id) {
-      // Fetch user data from API if not available in Redux store
       axios
         .get(`http://localhost:4000/users/${id}`)
         .then((response) => {
           setUserData(response.data);
-          form.reset(response.data); // Set the form values after fetching data
+          form.reset(response.data);
         })
         .catch((error) => {
           console.error("Failed to fetch user:", error);
@@ -92,16 +87,13 @@ const EditUserModule = () => {
     setLoading(true);
 
     try {
-      // Make PUT request to update the user in the JSON server
       const response = await axios.put(
         `http://localhost:4000/users/${id}`,
         data
       );
 
-      // Dispatch the editUser action to update Redux store
       dispatch(editUser(response.data));
 
-      // Navigate to the previous page
       navigate("/");
 
       toast({
@@ -351,7 +343,6 @@ const EditUserModule = () => {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className="my-3 flex justify-end gap-3">
                 <Link to="/">
                   <Button className="hover:bg-slate-950 border-white text-white border-2 bg-slate-900 shadow-md">
@@ -363,7 +354,7 @@ const EditUserModule = () => {
                     <ButtonLoading />
                   ) : (
                     <DialogTrigger asChild>
-                      <Button className="bg-green-500 hover:bg-green-600">
+                      <Button className="bg-blue-500 hover:bg-blue-600">
                         Update User
                       </Button>
                     </DialogTrigger>
@@ -371,26 +362,26 @@ const EditUserModule = () => {
                   <DialogContent className="z-[9999] p-12 text-center sm:max-w-[425px]">
                     <DialogHeader>
                       <DialogTitle className="text-center">
-                        Apakah Anda yakin informasi sudah sesuai?
+                        Are you sure the information is correct?
                       </DialogTitle>
                       <div className="py-3">
-                        <Separator className="bg-green-500 mx-auto h-1 w-1/3 rounded-full" />
+                        <Separator className="bg-blue-500 mx-auto h-1 w-1/3 rounded-full" />
                       </div>
                       <DialogDescription className="text-center">
-                        Cek kembali informasi User dengan benar.
+                        Please review the user information carefully.
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter className="flex w-full justify-between">
                       <DialogClose className="w-full">
                         <Button variant="outline" className="w-full">
-                          Tinjau Ulang
+                          Review Again
                         </Button>
                       </DialogClose>
                       <DialogClose className="w-full">
                         <Button
                           onClick={() => form.handleSubmit(onSubmit)()}
                           type="submit"
-                          className="bg-green-500 hover:bg-green-600 w-full"
+                          className="bg-blue-500 hover:bg-blue-600 w-full"
                         >
                           Submit
                         </Button>

@@ -7,8 +7,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store"; // Adjust path as necessary
-import { User } from "@/types/user"; // Adjust path as necessary
+import { RootState } from "@/redux/store";
+import { User } from "@/types/user";
 import { setUsers } from "@/redux/userSlice";
 import axios from "axios";
 
@@ -28,7 +28,6 @@ const ListUsersModule: React.FC = () => {
 
   console.log(users);
 
-  // Filter users based on the search term
   const filteredUsers = users.filter((user: User) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -41,10 +40,10 @@ const ListUsersModule: React.FC = () => {
         <div className="relative w-1/2 md:w-1/3">
           <Input
             type="text"
-            placeholder="Cari Pengguna"
+            placeholder="Search User"
             className="pl-10"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update searchTerm state on input change
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <AiOutlineSearch className="text-gray-400" size={20} />
@@ -62,10 +61,14 @@ const ListUsersModule: React.FC = () => {
           </Button>
         </div>
       </section>
-      <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3">
-        {/* Pass filtered users to ListUsers */}
-        <ListUsers users={filteredUsers} />
-      </div>
+
+      {filteredUsers.length > 0 ? (
+        <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3">
+          <ListUsers users={filteredUsers} />
+        </div>
+      ) : (
+        <h2 className="text-center text-base mt-16">No user found</h2>
+      )}
     </Layout>
   );
 };
