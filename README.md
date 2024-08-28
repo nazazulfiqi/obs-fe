@@ -22,6 +22,9 @@
 - Centralized state management with Redux.
 - Unit tests with React Testing Library.
 
+## Testing
+Run `npm test` to execute the tests.
+
 ## Deployment
 
 The application is deployed on [Vercel] https://obs-fe-assignment-six.vercel.app/
