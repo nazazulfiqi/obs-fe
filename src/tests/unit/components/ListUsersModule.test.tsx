@@ -4,9 +4,8 @@ import { store } from "@/redux/store";
 import axios from "axios";
 import { User } from "@/types/user";
 import ListUsersModule from "@/modules/list-users/module";
-import { MemoryRouter } from "react-router-dom"; // Add this import
+import { MemoryRouter } from "react-router-dom";
 
-// Mock axios
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -47,7 +46,6 @@ describe("ListUsersModule", () => {
       </Provider>
     );
 
-    // Check if the fetch and display logic works
     await waitFor(() => {
       expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
     });
@@ -112,12 +110,10 @@ describe("ListUsersModule", () => {
       </Provider>
     );
 
-    // Wait for users to be fetched
     await waitFor(() => {
       expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
     });
 
-    // Simulate input change
     const searchInput = screen.getByPlaceholderText(
       /Search User/i
     ) as HTMLInputElement;
