@@ -35,7 +35,7 @@ export const ModalDetailUser = ({
             <h4 className="text-center text-2xl py-4">{user.name}</h4>
           </DialogTitle>
           <DialogDescription className="text-black">
-            <div>
+            <div className="text-start">
               <h1 className="text-lg font-semibold py-2 ">
                 Personal Information
               </h1>
@@ -56,7 +56,7 @@ export const ModalDetailUser = ({
                 </p>
               </div>
             </div>
-            <div>
+            <div className="text-start">
               <h1 className="text-lg font-semibold pt-4 pb-1 ">Address</h1>
               <p>
                 {user.address.street}, {user.address.suite}, {user.address.city}
@@ -64,7 +64,7 @@ export const ModalDetailUser = ({
               </p>
             </div>
 
-            <div>
+            <div className="text-start">
               <h1 className="text-lg font-semibold pt-4 pb-1 ">Company</h1>
               <p>{user.company.name}</p>
               <p>

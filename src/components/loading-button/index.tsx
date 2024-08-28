@@ -8,11 +8,7 @@ type ButtonLoadingProps = ButtonProps & {
 
 export default function ButtonLoading(props: ButtonLoadingProps) {
   return (
-    <Button
-      disabled
-      type="button"
-      className={`bg-primary-base ${props.className || ""}`}
-    >
+    <Button disabled type="button" className={`${props.className || ""} `}>
       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       Please wait
     </Button>

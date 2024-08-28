@@ -80,6 +80,7 @@ const AddUserModule = () => {
       });
     } catch (error) {
       console.error("Failed to add user:", error);
+      setLoading(false);
     } finally {
       setLoading(false);
     }
@@ -96,7 +97,7 @@ const AddUserModule = () => {
             >
               <div>
                 <h2 className="font-semibold text-2xl">Personal Information</h2>
-                <div className="grid grid-cols-2 gap-6 py-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
                   {/* Full Name */}
                   <FormField
                     control={form.control}
@@ -176,7 +177,7 @@ const AddUserModule = () => {
 
               <div>
                 <h2 className="font-semibold text-2xl">Address</h2>
-                <div className="grid grid-cols-2 gap-6 py-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
                   {/* Street */}
                   <FormField
                     control={form.control}
@@ -273,7 +274,7 @@ const AddUserModule = () => {
                 <h2 className="font-semibold text-2xl">
                   Additional Information
                 </h2>
-                <div className="grid grid-cols-2 gap-6 py-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
                   {/* Company */}
                   <FormField
                     control={form.control}
@@ -329,7 +330,7 @@ const AddUserModule = () => {
                 </Link>
                 <Dialog>
                   {loading ? (
-                    <ButtonLoading />
+                    <ButtonLoading className="bg-green-500 " />
                   ) : (
                     <DialogTrigger asChild>
                       <Button className="bg-green-500 hover:bg-green-600">
