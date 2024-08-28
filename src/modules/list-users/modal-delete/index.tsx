@@ -1,5 +1,5 @@
-import { IoWarningOutline } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
+import { IoWarningOutline } from 'react-icons/io5';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -9,11 +9,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { deleteUser, setUsers } from "@/redux/userSlice";
+} from '@/components/ui/dialog';
+import { useToast } from '@/components/ui/use-toast';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { deleteUser, setUsers } from '@/redux/userSlice';
 const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 interface ModalDeleteUserProps {
@@ -33,7 +33,7 @@ export const ModalDeleteUser = ({
       const response = await axios.get(`${BASE_API_URL}/users`);
       dispatch(setUsers(response.data));
     } catch (error) {
-      console.error("Failed to fetch users:", error);
+      console.error('Failed to fetch users:', error);
     }
   };
 
@@ -44,15 +44,15 @@ export const ModalDeleteUser = ({
       fetchUsers();
 
       toast({
-        title: "User Deleted Successfully",
-        description: "The user has been successfully deleted.",
+        title: 'User Deleted Successfully',
+        description: 'The user has been successfully deleted.',
       });
     } catch (error) {
-      console.error("Failed to delete user:", error);
+      console.error('Failed to delete user:', error);
 
       toast({
-        title: "Error",
-        description: "Failed to delete the user. Please try again.",
+        title: 'Error',
+        description: 'Failed to delete the user. Please try again.',
       });
     }
   };
@@ -86,7 +86,7 @@ export const ModalDeleteUser = ({
           <DialogClose className="w-full">
             <Button
               type="submit"
-              className="w-full bg-red-800 hover:bg-red-900"
+              className="text-white w-full bg-red-800 hover:bg-red-900"
               onClick={handleSubmitDelete}
             >
               Delete

@@ -1,39 +1,46 @@
-import Layout from "@/components/layout/Layout";
-import ListUsers from "@/components/ListUsers";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { User } from "@/types/user";
-import { setUsers } from "@/redux/userSlice";
-import axios from "axios";
+import Layout from '@/components/layout/Layout';
+import ListUsers from '@/components/ListUsers';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import React, { useEffect, useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { CiCirclePlus } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { User } from '@/types/user';
+import { setUsers } from '@/redux/userSlice';
+import axios from 'axios';
+import { SkeletonCard } from '@/components/skeleton-card';
+
 const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 const ListUsersModule: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true); // Add loading state
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.users.users);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await axios.get<User[]>(`${BASE_API_URL}/users`);
-      dispatch(setUsers(response.data));
+      setLoading(true); // Start loading
+
+      try {
+        const response = await axios.get<User[]>(`${BASE_API_URL}/users`);
+        dispatch(setUsers(response.data));
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
+      } finally {
+        setLoading(false); // Stop loading once data is fetched or error occurs
+      }
     };
 
     fetchUsers();
   }, [dispatch]);
 
-  console.log(users);
-
   const filteredUsers = users.filter((user: User) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  console.log(filteredUsers);
 
   return (
     <Layout>
@@ -63,7 +70,14 @@ const ListUsersModule: React.FC = () => {
         </div>
       </section>
 
-      {filteredUsers.length > 0 ? (
+      {/* Show skeleton loading cards if loading */}
+      {loading ? (
+        <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      ) : filteredUsers.length > 0 ? (
         <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3">
           <ListUsers users={filteredUsers} />
         </div>

@@ -1,6 +1,6 @@
-import { Loader2 } from "lucide-react";
+import { Loader2 } from 'lucide-react';
 
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button, ButtonProps } from '@/components/ui/button';
 
 type ButtonLoadingProps = ButtonProps & {
   // Tambahkan properti khusus untuk ButtonLoading di sini jika diperlukan
@@ -8,7 +8,11 @@ type ButtonLoadingProps = ButtonProps & {
 
 export default function ButtonLoading(props: ButtonLoadingProps) {
   return (
-    <Button disabled type="button" className={`${props.className || ""} `}>
+    <Button
+      disabled
+      type="button"
+      className={`${props.className || ''} text-white`}
+    >
       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       Please wait
     </Button>

@@ -1,6 +1,6 @@
-import Layout from "@/components/layout/Layout";
-import ButtonLoading from "@/components/loading-button";
-import { Button } from "@/components/ui/button";
+import Layout from '@/components/layout/Layout';
+import ButtonLoading from '@/components/loading-button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Form,
   FormControl,
@@ -18,21 +18,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { addUserSchema } from "@/validations/add-user-schema";
-import { z } from "zod";
-import axios from "axios";
-import { editUser } from "@/redux/userSlice";
-import { useDispatch } from "react-redux";
-import { useToast } from "@/components/ui/use-toast";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { addUserSchema } from '@/validations/add-user-schema';
+import { z } from 'zod';
+import axios from 'axios';
+import { editUser } from '@/redux/userSlice';
+import { useDispatch } from 'react-redux';
+import { useToast } from '@/components/ui/use-toast';
 const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
-// import { RootState } from "@/redux/store";
 
 const EditUserModule = () => {
   const [loading, setLoading] = useState(false);
@@ -47,25 +46,25 @@ const EditUserModule = () => {
   const form = useForm<z.infer<typeof addUserSchema>>({
     resolver: zodResolver(addUserSchema),
     defaultValues: userData || {
-      name: "",
-      username: "",
-      email: "",
-      phone: "",
-      website: "",
+      name: '',
+      username: '',
+      email: '',
+      phone: '',
+      website: '',
       address: {
-        street: "",
-        suite: "",
-        city: "",
-        zipcode: "",
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: '',
         geo: {
-          lat: "",
-          lng: "",
+          lat: '',
+          lng: '',
         },
       },
       company: {
-        name: "",
-        catchPhrase: "",
-        bs: "",
+        name: '',
+        catchPhrase: '',
+        bs: '',
       },
     },
   });
@@ -79,7 +78,7 @@ const EditUserModule = () => {
           form.reset(response.data);
         })
         .catch((error) => {
-          console.error("Failed to fetch user:", error);
+          console.error('Failed to fetch user:', error);
         });
     }
   }, [id, form]);
@@ -92,14 +91,14 @@ const EditUserModule = () => {
 
       dispatch(editUser(response.data));
 
-      navigate("/");
+      navigate('/');
 
       toast({
-        title: "User updated successfully",
-        description: "User information updated successfully.",
+        title: 'User updated successfully',
+        description: 'User information updated successfully.',
       });
     } catch (error) {
-      console.error("Failed to update user:", error);
+      console.error('Failed to update user:', error);
     } finally {
       setLoading(false);
     }
@@ -124,6 +123,7 @@ const EditUserModule = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Full Name</FormLabel>
+
                         <FormControl>
                           <Input placeholder="Enter Full Name" {...field} />
                         </FormControl>
@@ -352,7 +352,7 @@ const EditUserModule = () => {
                     <ButtonLoading className="bg-blue-500 hover:bg-blue-600" />
                   ) : (
                     <DialogTrigger asChild>
-                      <Button className="bg-blue-500 hover:bg-blue-600">
+                      <Button className="bg-blue-500 hover:bg-blue-600 text-white">
                         Update User
                       </Button>
                     </DialogTrigger>
@@ -379,7 +379,7 @@ const EditUserModule = () => {
                         <Button
                           onClick={() => form.handleSubmit(onSubmit)()}
                           type="submit"
-                          className="bg-blue-500 hover:bg-blue-600 w-full"
+                          className="bg-blue-500 hover:bg-blue-600 w-full text-white"
                         >
                           Submit
                         </Button>

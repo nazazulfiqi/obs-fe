@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { User } from "@/types/user";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from '@/components/ui/dialog';
+import { User } from '@/types/user';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface ModalDetailUserProps {
   modalTrigger: React.ReactNode;
@@ -34,14 +34,14 @@ export const ModalDetailUser = ({
             </Avatar>
             <h4 className="text-center text-2xl py-4">{user.name}</h4>
           </DialogTitle>
-          <DialogDescription className="text-black">
+          <DialogDescription className="text-black dark:text-slate-400">
             <div className="text-start">
               <h1 className="text-lg font-semibold py-2 ">
                 Personal Information
               </h1>
               <div className="grid grid-cols-2 gap-1">
                 <p>
-                  <span className="font-semibold">Username</span> :{" "}
+                  <span className="font-semibold">Username</span> :{' '}
                   {user.username}
                 </p>
                 <p>
@@ -51,7 +51,7 @@ export const ModalDetailUser = ({
                   <span className="font-semibold">Email</span> : {user.email}
                 </p>
                 <p>
-                  <span className="font-semibold">Website</span> :{" "}
+                  <span className="font-semibold">Website</span> :{' '}
                   {user.website}
                 </p>
               </div>

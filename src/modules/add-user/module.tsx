@@ -1,6 +1,6 @@
-import Layout from "@/components/layout/Layout";
-import ButtonLoading from "@/components/loading-button";
-import { Button } from "@/components/ui/button";
+import Layout from '@/components/layout/Layout';
+import ButtonLoading from '@/components/loading-button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Form,
   FormControl,
@@ -18,19 +18,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { addUserSchema } from "@/validations/add-user-schema";
-import { z } from "zod";
-import axios from "axios";
-import { addUser } from "@/redux/userSlice";
-import { useDispatch } from "react-redux";
-import { useToast } from "@/components/ui/use-toast";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { addUserSchema } from '@/validations/add-user-schema';
+import { z } from 'zod';
+import axios from 'axios';
+import { addUser } from '@/redux/userSlice';
+import { useDispatch } from 'react-redux';
+import { useToast } from '@/components/ui/use-toast';
 const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
 const AddUserModule = () => {
@@ -42,25 +42,25 @@ const AddUserModule = () => {
   const form = useForm<z.infer<typeof addUserSchema>>({
     resolver: zodResolver(addUserSchema),
     defaultValues: {
-      name: "",
-      username: "",
-      email: "",
-      phone: "",
-      website: "",
+      name: '',
+      username: '',
+      email: '',
+      phone: '',
+      website: '',
       address: {
-        street: "",
-        suite: "",
-        city: "",
-        zipcode: "",
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: '',
         geo: {
-          lat: "",
-          lng: "",
+          lat: '',
+          lng: '',
         },
       },
       company: {
-        name: "",
-        catchPhrase: "",
-        bs: "",
+        name: '',
+        catchPhrase: '',
+        bs: '',
       },
     },
   });
@@ -73,13 +73,13 @@ const AddUserModule = () => {
 
       dispatch(addUser(response.data));
       form.reset();
-      navigate("/");
+      navigate('/');
       toast({
-        title: "User added successfully",
-        description: "User added successfully",
+        title: 'User added successfully',
+        description: 'User added successfully',
       });
     } catch (error) {
-      console.error("Failed to add user:", error);
+      console.error('Failed to add user:', error);
       setLoading(false);
     } finally {
       setLoading(false);
@@ -333,7 +333,7 @@ const AddUserModule = () => {
                     <ButtonLoading className="bg-green-500 " />
                   ) : (
                     <DialogTrigger asChild>
-                      <Button className="bg-green-500 hover:bg-green-600">
+                      <Button className="bg-green-500 hover:bg-green-600 text-white">
                         Add User
                       </Button>
                     </DialogTrigger>
@@ -360,7 +360,7 @@ const AddUserModule = () => {
                         <Button
                           onClick={() => form.handleSubmit(onSubmit)()}
                           type="submit"
-                          className="bg-green-500 hover:bg-green-600 w-full"
+                          className="bg-green-500 hover:bg-green-600 w-full text-white"
                         >
                           Submit
                         </Button>

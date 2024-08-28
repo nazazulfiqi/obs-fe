@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "./ui/button";
-import { ModalDeleteUser } from "@/modules/list-users/modal-delete";
-import { MdDeleteOutline } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { IoEyeOutline } from "react-icons/io5";
-import { User } from "@/types/user";
-import { ModalDetailUser } from "@/modules/detail-user/module";
+} from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from './ui/button';
+import { ModalDeleteUser } from '@/modules/list-users/modal-delete';
+import { MdDeleteOutline } from 'react-icons/md';
+import { FaRegEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { IoEyeOutline } from 'react-icons/io5';
+import { User } from '@/types/user';
+import { ModalDetailUser } from '@/modules/detail-user/module';
 
 const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
   return (
@@ -41,7 +41,7 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
               <strong>Phone:</strong> {user.phone}
             </p>
             <p>
-              <strong>Address:</strong> {user.address.street},{" "}
+              <strong>Address:</strong> {user.address.street},{' '}
               {user.address.city}
             </p>
             <p>
@@ -53,7 +53,10 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
           </CardContent>
           <CardFooter className="flex justify-between">
             <div className="flex items-center gap-2">
-              <Button className="bg-blue-500 hover:bg-blue-600" asChild>
+              <Button
+                className="bg-blue-500 hover:bg-blue-600 text-white"
+                asChild
+              >
                 <Link to={`/edit-user/${user.id}`}>
                   <FaRegEdit size={16} />
                 </Link>
@@ -61,7 +64,7 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
               <ModalDeleteUser
                 userId={String(user.id)}
                 modalTrigger={
-                  <Button className="bg-red-700 hover:bg-red-800">
+                  <Button className="bg-red-700 hover:bg-red-800 text-white">
                     <MdDeleteOutline size={18} />
                   </Button>
                 }
@@ -70,7 +73,7 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
             <ModalDetailUser
               user={user}
               modalTrigger={
-                <Button className="bg-slate-900 hover:bg-slate-950">
+                <Button className="bg-slate-900 hover:bg-black text-white">
                   <IoEyeOutline size={18} />
                 </Button>
               }
