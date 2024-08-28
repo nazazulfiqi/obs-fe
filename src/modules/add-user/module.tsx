@@ -350,7 +350,7 @@ const AddUserModule = () => {
                         Please review the user information carefully.
                       </DialogDescription>
                     </DialogHeader>
-                    <DialogFooter className="flex w-full justify-between">
+                    <DialogFooter className="flex w-full justify-between gap-2 md:gap-0">
                       <DialogClose className="w-full">
                         <Button variant="outline" className="w-full">
                           Review Again
