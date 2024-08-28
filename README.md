@@ -13,6 +13,8 @@
 
 ## Features
 
+- Switch mode.
+- Skeleton component.
 - Display a list of users.
 - View user details in a modal.
 - Add, edit, and delete users.
