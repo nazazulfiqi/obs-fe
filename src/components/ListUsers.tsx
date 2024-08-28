@@ -26,10 +26,13 @@ const ListUsers: React.FC<{ users: User[] }> = ({ users }) => {
         >
           <CardHeader className="flex flex-row gap-4 items-center min-h-[120px]">
             <Avatar>
-              <AvatarImage src={`https://picsum.photos/seed/${user.id}/50`} />
+              <AvatarImage
+                src={`https://picsum.photos/seed/${user.id}/50`}
+                alt="Avatar User"
+              />
               <AvatarFallback>{user.name.slice(0, 2)}</AvatarFallback>
             </Avatar>
-            <CardTitle className="text-xl font-semibold line-clamp-2">
+            <CardTitle className="text-xl font-semibold ">
               {user.name}
             </CardTitle>
           </CardHeader>

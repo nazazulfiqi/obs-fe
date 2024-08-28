@@ -59,18 +59,16 @@ const ListUsersModule: React.FC = () => {
         </div>
         <div className="flex items-center gap-3">
           <Button
-            className="bg-green-500 hover:bg-green-600 flex items-center justify-center gap-1 px-3 py-2 text-base font-normal text-white shadow-md hover:text-white"
+            className="bg-green-500 hover:bg-green-600 text-base text-white shadow-md hover:text-white font-semibold"
             asChild
           >
-            <Link to="/add-user">
-              <CiCirclePlus size={20} />
-              <p className="leading-none">Add User</p>
+            <Link to="/add-user" className="flex items-center justify-center">
+              <CiCirclePlus size={20} className="mr-2" /> Add User
             </Link>
           </Button>
         </div>
       </section>
 
-      {/* Show skeleton loading cards if loading */}
       {loading ? (
         <div className="grid lg:grid-cols-4 gap-4 grid-cols-1 md:grid-cols-3 ">
           {Array.from({ length: 8 }).map((_, index) => (
