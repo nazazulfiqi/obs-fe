@@ -27,6 +27,7 @@ This repository is 🔋 battery packed with:
 - ⚡️ Vite ^5
 - ⚛️ React 18 with React Router
 - ✨ TypeScript
+- 🔥 Redux Toolkit
 - 💨 Tailwind CSS 3 with Shadcn UI
 - 🃏 Jest — Configured for unit testing
 - 📈 Absolute Import and Path Alias — Import components using `@/` prefix
@@ -34,6 +35,7 @@ This repository is 🔋 battery packed with:
 - 💖 Prettier — Format your code consistently
 
 ## Testing
+
 Run `npm test` to execute the tests.
 
 ## Deployment
@@ -45,4 +47,5 @@ The application is deployed on [Vercel]
 https://obs-fe-assignment-six.vercel.app/
 
 ### Backend
+
 https://api-obs.vercel.app/
