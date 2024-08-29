@@ -22,9 +22,27 @@
 - Centralized state management with Redux.
 - Unit tests with React Testing Library.
 
+This repository is 🔋 battery packed with:
+
+- ⚡️ Vite ^5
+- ⚛️ React 18 with React Router
+- ✨ TypeScript
+- 💨 Tailwind CSS 3 with Shadcn UI
+- 🃏 Jest — Configured for unit testing
+- 📈 Absolute Import and Path Alias — Import components using `@/` prefix
+- 📏 ESLint — Find and fix problems in your code
+- 💖 Prettier — Format your code consistently
+
 ## Testing
 Run `npm test` to execute the tests.
 
 ## Deployment
 
-The application is deployed on [Vercel] https://obs-fe-assignment-six.vercel.app/
+The application is deployed on [Vercel] 
+
+### Frontend
+
+https://obs-fe-assignment-six.vercel.app/
+
+### Backend
+https://api-obs.vercel.app/
